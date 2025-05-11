@@ -106,10 +106,12 @@ function App() {
               </Link>
             </div>
             <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-            <MobileNav />
           </div>
         </nav>
       </header>
+
+      {/* Mobile Navigation */}
+      <MobileNav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
       {/* Main content */}
       <main className="pt-16">

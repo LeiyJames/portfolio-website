@@ -1,92 +1,91 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-scroll'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { 
+  UserIcon, 
+  FolderIcon, 
+  BriefcaseIcon, 
+  EnvelopeIcon,
+  SunIcon,
+  MoonIcon
+} from '@heroicons/react/24/outline'
 
-const MobileNav = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+const MobileNav = ({ isDarkMode, toggleDarkMode }) => {
+  const navLinks = [
+    { 
+      to: "about", 
+      label: "About",
+      icon: UserIcon
+    },
+    { 
+      to: "projects", 
+      label: "Projects",
+      icon: FolderIcon
+    },
+    { 
+      to: "experience", 
+      label: "Experience",
+      icon: BriefcaseIcon
+    },
+    { 
+      to: "contact", 
+      label: "Contact",
+      icon: EnvelopeIcon
+    }
+  ]
 
   return (
-    <div className="md:hidden">
-      {/* Hamburger Menu Button */}
-      <label className="flex flex-col gap-2 w-8 cursor-pointer z-50 relative" onClick={toggleMenu}>
-        <input className="peer hidden" type="checkbox" checked={isOpen} readOnly />
-        <div
-          className={`rounded-2xl h-[3px] w-1/2 bg-gray-800 dark:bg-white duration-500 ${
-            isOpen ? 'rotate-[225deg] origin-right -translate-x-[12px] -translate-y-[1px]' : ''
-          }`}
-        ></div>
-        <div
-          className={`rounded-2xl h-[3px] w-full bg-gray-800 dark:bg-white duration-500 ${
-            isOpen ? '-rotate-45' : ''
-          }`}
-        ></div>
-        <div
-          className={`rounded-2xl h-[3px] w-1/2 bg-gray-800 dark:bg-white duration-500 place-self-end ${
-            isOpen ? 'rotate-[225deg] origin-left translate-x-[12px] translate-y-[1px]' : ''
-          }`}
-        ></div>
-      </label>
+    <div className="fixed bottom-6 left-0 right-0 md:hidden z-50 flex justify-center">
+      <motion.div 
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-auto"
+      >
+        <nav className="flex items-center gap-2 p-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+          {navLinks.map((link) => {
+            const Icon = link.icon
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                spy={true}
+                smooth={true}
+                offset={-64}
+                className="group relative p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                activeClass="active"
+              >
+                <Icon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+                
+                {/* Tooltip */}
+                <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                  {link.label}
+                </span>
+              </Link>
+            )
+          })}
 
-      {/* Mobile Navigation Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 bg-white/95 dark:bg-gray-900/95 z-40 flex items-center justify-center"
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className="group relative p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+            aria-label="Toggle theme"
           >
-            <nav className="flex flex-col items-center space-y-8 text-2xl">
-              <Link
-                to="about"
-                spy={true}
-                smooth={true}
-                className="nav-link text-2xl"
-                activeClass="active"
-                onClick={toggleMenu}
-              >
-                About
-              </Link>
-              <Link
-                to="projects"
-                spy={true}
-                smooth={true}
-                className="nav-link text-2xl"
-                activeClass="active"
-                onClick={toggleMenu}
-              >
-                Projects
-              </Link>
-              <Link
-                to="experience"
-                spy={true}
-                smooth={true}
-                className="nav-link text-2xl"
-                activeClass="active"
-                onClick={toggleMenu}
-              >
-                Experience
-              </Link>
-              <Link
-                to="contact"
-                spy={true}
-                smooth={true}
-                className="nav-link text-2xl"
-                activeClass="active"
-                onClick={toggleMenu}
-              >
-                Contact
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {isDarkMode ? (
+              <SunIcon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+            ) : (
+              <MoonIcon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+            )}
+            
+            {/* Tooltip */}
+            <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            </span>
+          </button>
+        </nav>
+      </motion.div>
     </div>
   )
 }
 
-export default MobileNav 
+export default MobileNav

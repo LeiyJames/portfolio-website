@@ -13,6 +13,7 @@
     position: relative;
   }
 
+  /* Only show overlay in dark mode */
   body::before {
     content: '';
     position: fixed;
@@ -23,6 +24,7 @@
     background: rgba(0, 0, 0, 0.4);
     pointer-events: none;
     z-index: 1;
+    @apply hidden dark:block;
   }
 }
 
@@ -186,11 +188,11 @@
   }
 
   .nav-link {
-    @apply relative transition-colors duration-200 cursor-pointer;
+    @apply relative transition-colors duration-200 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400;
   }
 
   .nav-link::after {
-    @apply content-[''] absolute left-0 bottom-[-4px] w-0 h-[2px] bg-primary-600 transition-all duration-300;
+    @apply content-[''] absolute left-0 bottom-[-4px] w-0 h-[2px] bg-primary-600 dark:bg-primary-400 transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -198,13 +200,23 @@
   }
 
   .nav-link.active {
-    @apply text-primary-600;
+    @apply text-primary-600 dark:text-primary-400;
   }
 
   .nav-link.active::after {
     @apply w-full;
   }
 
+  /* Mobile Navigation Styles */
+  .group.active {
+    @apply bg-primary-50 dark:bg-primary-900/20;
+  }
+
+  .group.active svg {
+    @apply text-primary-600 dark:text-primary-400;
+  }
+
+  /* Logo Link Styles */
   .logo-link {
     @apply relative text-2xl font-semibold font-poppins cursor-pointer;
   }
