@@ -88,7 +88,7 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   className="button-primary w-full sm:w-auto text-sm sm:text-base px-6 py-2 sm:px-8 sm:py-3"
                 >
-                  View My Work
+                  <span>View My Work</span>
                 </motion.button>
               </Link>
               

@@ -185,7 +185,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   className="button-primary transform hover:scale-105 transition-transform duration-300"
                 >
-                  Live Demo
+                  <span>Live Demo</span>
                 </a>
               </motion.div>
             </motion.div>

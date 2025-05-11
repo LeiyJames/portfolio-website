@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_FORM_ID") // Replace with your Formspree form ID
+  const [state, handleSubmit] = useForm("xkgrvjbo")
 
   if (state.succeeded) {
     return (
@@ -112,7 +112,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="space-y-6"
-            action="https://formspree.io/f/your-form-id"
+            onSubmit={handleSubmit}
             method="POST"
           >
             <div>
@@ -126,6 +126,7 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
+              <ValidationError prefix="Name" field="name" errors={state.errors} />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -138,6 +139,7 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -150,10 +152,16 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
             </div>
-            <button type="submit" className="button-primary w-full">
-              Send Message
+            <button 
+              type="submit" 
+              className="button-primary w-full"
+              disabled={state.submitting}
+            >
+              <span>{state.submitting ? 'Sending...' : 'Send Message'}</span>
             </button>
+            <ValidationError errors={state.errors} />
           </motion.form>
         </div>
       </div>
