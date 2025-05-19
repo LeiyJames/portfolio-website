@@ -5,22 +5,22 @@ const experiences = [
     title: "Software QA Tester",
     company: "GoodApps Inc.",
     period: "2025 - Present",
-    description: "Led end-to-end testing of web applications, created automated test scripts using Selenium and Cypress, and collaborated with development teams to improve software quality.",
-    skills: ["Manual Testing", "Playwright", "Bug Tracking", "Trello", "Agile"]
+    description: "Collaborated with the development team to create and execute test plans, identified and reported defects, and ensured the quality of the software meets the requirements.",
+    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "UX Testing", "Regression Testing","Agile"]
   },
   {
     title: "Software QA Tester - Internship",
     company: "ASV Business Solutions",
     period: "3 months",
-    description: "Developed and maintained sales funnel automation systems for clients, improving their conversion rates and streamlining their business processes.",
-    skills: ["Manual Testing", "Pentest", "Test Case Creation"]
+    description: "Performed manual testing of web applications, created test cases and documentation, and participated in agile development processes.",
+    skills: ["Test Case Creation", "Manual Testing", "Pentest", "Performance Testing", "Black Box Testing", "Regression Testing"]
   },
   {
     title: "Frontend Developer",
     company: "Self-Employed",
     period: "2021 - Present",
-    description: "Performed manual testing of web applications, created test cases and documentation, and participated in agile development processes.",
-    skills: ["Web Development", "Frontend Development","React", "Typescript", "Supabase"]
+    description: "Developed and maintained web applications using React, Typescript, and Supabase. Collaborated with the design team to implement new features and improve the user experience.",
+    skills: ["Web Development", "Frontend Development","React", "Typescript", "Supabase", "Tailwind CSS", "Framer Motion"]
   }
 ] 
 

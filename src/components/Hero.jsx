@@ -1,12 +1,44 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
-import { ArrowDownIcon } from '@heroicons/react/24/outline'
+import { ArrowDownIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import RoleSlider from './RoleSlider'
 import Lottie from 'lottie-react'
 import { useEffect, useState } from 'react'
 
 const Hero = () => {
   const [animation, setAnimation] = useState(null)
+  const [currentTime, setCurrentTime] = useState(new Date())
+  const [isAvailable, setIsAvailable] = useState(true)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    // Update time every minute
+    const timer = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 60000)
+
+    // Check availability based on time (example: available between 9 AM and 6 PM)
+    const checkAvailability = () => {
+      const hour = new Date().getHours()
+      setIsAvailable(hour >= 9 && hour < 18)
+    }
+    checkAvailability()
+
+    // Track mouse movement for parallax effect
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e
+      const moveX = (clientX - window.innerWidth / 2) / 20
+      const moveY = (clientY - window.innerHeight / 2) / 20
+      setMousePosition({ x: moveX, y: moveY })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      clearInterval(timer)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
 
   useEffect(() => {
     fetch('/Animation.json')
@@ -44,9 +76,68 @@ const Hero = () => {
     }
   }
 
+  const formatTime = (date) => {
+    return date.toLocaleTimeString('en-US', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: true 
+    })
+  }
+
+  const stats = [
+    { label: 'Years Experience', value: '1+' },
+    { label: 'Projects Completed', value: '13+' },
+    { label: 'Companies Worked', value: '2+' }
+  ]
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 py-16 sm:py-20">
-      <div className="section-container">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
+      {/* Interactive background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div 
+          className="absolute w-64 h-64 bg-primary-500/10 rounded-full blur-3xl"
+          animate={{
+            x: mousePosition.x * 2,
+            y: mousePosition.y * 2,
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeOut",
+            scale: {
+              repeat: Infinity,
+              duration: 8
+            }
+          }}
+          style={{
+            left: '20%',
+            top: '20%'
+          }}
+        />
+        <motion.div 
+          className="absolute w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl"
+          animate={{
+            x: mousePosition.x * -2,
+            y: mousePosition.y * -2,
+            scale: [1.1, 1, 1.1],
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeOut",
+            scale: {
+              repeat: Infinity,
+              duration: 10,
+              delay: 1
+            }
+          }}
+          style={{
+            right: '20%',
+            bottom: '20%'
+          }}
+        />
+      </div>
+
+      <div className="section-container relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Left side - Text content */}
           <motion.div
@@ -56,6 +147,27 @@ const Hero = () => {
             viewport={{ once: false, margin: "-100px" }}
             className="text-center md:text-left order-2 md:order-1"
           >
+            {/* Time and Location Display */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400"
+            >
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {formatTime(currentTime)} GMT+8
+              </span>
+              <span className={`flex items-center gap-2 ${isAvailable ? 'text-green-500' : 'text-gray-500'}`}>
+                <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500' : 'bg-gray-500'}`}></span>
+                {isAvailable ? 'Available for Work' : 'Currently Working'}
+              </span>
+              <span className="flex items-center gap-2">
+                <MapPinIcon className="w-4 h-4" />
+                Philippines
+              </span>
+            </motion.div>
+
             <motion.h1 variants={itemVariants} className="heading-primary mb-6">
               <motion.span 
                 variants={itemVariants}
@@ -71,6 +183,24 @@ const Hero = () => {
               </motion.div>
             </motion.h1>
             
+            {/* Quick Stats */}
+            <motion.div 
+              variants={itemVariants}
+              className="grid grid-cols-3 gap-4 mb-8 max-w-md mx-auto md:mx-0"
+            >
+              {stats.map((stat, index) => (
+                <motion.div 
+                  key={index} 
+                  className="text-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+
             <motion.p 
               variants={itemVariants}
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0 px-4 md:px-0"
@@ -158,7 +288,12 @@ const Hero = () => {
           {/* Right side - Lottie Animation */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ 
+              opacity: 1, 
+              x: 0,
+              y: mousePosition.y * 0.5,  // Subtle parallax effect
+              rotateY: mousePosition.x * 0.05  // Subtle rotation based on mouse
+            }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 md:order-2 w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto min-h-[250px] sm:min-h-[300px] md:min-h-[400px] flex items-center justify-center"
           >
