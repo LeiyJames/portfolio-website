@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
-import { DocumentArrowDownIcon } from '@heroicons/react/24/outline'
+import { DocumentArrowDownIcon, ArrowDownIcon } from '@heroicons/react/24/outline'
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xkgrvjbo")
@@ -47,15 +47,17 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6"
           >
-            <a 
-              href="/resume.pdf" 
+            <motion.a 
+              href="/FrontendDev.pdf" 
               target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="button-primary inline-flex items-center gap-2 relative group overflow-hidden"
             >
-              <DocumentArrowDownIcon className="w-5 h-5" />
-              <span>Download Resume</span>
-            </a>
+              <span className="relative z-10">Download Resume</span>
+              <ArrowDownIcon className="w-5 h-5 transform group-hover:translate-y-1 transition-transform duration-300" />
+            </motion.a>
           </motion.div>
         </motion.div>
 
