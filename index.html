@@ -6,9 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Leigh - Software QA Tester, Frontend Developer, and Automation Specialist" />
     <title>Leigh | QA & Frontend Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" />
+    
+    <!-- Load fonts with font-display: swap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&font-display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap&font-display=swap" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical CSS -->
+    <style>
+      /* Inline critical CSS here */
+      @import url('/src/styles/critical.css');
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="/src/styles/Loader.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/src/styles/ThemeToggle.css" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="/src/styles/Loader.css" />
+      <link rel="stylesheet" href="/src/styles/ThemeToggle.css" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -84,7 +84,7 @@ const WorkExperience = () => {
         <div className="relative">
           {/* Timeline line */}
           <motion.div 
-            className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-700"
+            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-700"
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             viewport={{ once: false, margin: "-100px" }}
@@ -101,23 +101,28 @@ const WorkExperience = () => {
               <motion.div
                 key={exp.title}
                 variants={itemVariants}
-                className={`flex flex-col md:flex-row gap-8 mb-12 ${
+                className={`flex flex-col md:flex-row gap-8 mb-12 relative ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Timeline dot */}
                 <motion.div 
-                  className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full"
+                  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full z-10"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: false }}
                   transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                  style={{ top: `${index * 200 + 20}px` }}
+                  style={{ 
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)'
+                  }}
                 />
 
                 {/* Content */}
                 <motion.div 
-                  className="w-full md:w-1/2 ml-12 md:ml-0 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className={`w-full md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+                    index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                  }`}
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >

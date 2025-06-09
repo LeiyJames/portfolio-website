@@ -92,47 +92,412 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
-      {/* Interactive background elements */}
+      {/* Modern Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900"></div>
+      
+      {/* Geometric Pattern Overlay */}
+      <div className="absolute inset-0 opacity-50 dark:opacity-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.2),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.2),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(139,92,246,0.2),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_60%,rgba(236,72,153,0.15),transparent_50%)]"></div>
+      </div>
+
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 opacity-40 dark:opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(59,130,246,0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,130,246,0.2) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      {/* Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Code-like floating elements */}
         <motion.div 
-          className="absolute w-64 h-64 bg-primary-500/10 rounded-full blur-3xl"
+          className="absolute text-sm text-blue-500/60 dark:text-blue-400/60 font-mono font-bold"
           animate={{
-            x: mousePosition.x * 2,
-            y: mousePosition.y * 2,
-            scale: [1, 1.1, 1],
+            y: [0, -20, 0],
+            opacity: [0.4, 0.8, 0.4],
           }}
           transition={{
-            duration: 2,
-            ease: "easeOut",
-            scale: {
-              repeat: Infinity,
-              duration: 8
-            }
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            left: '10%',
+            top: '20%'
+          }}
+        >
+          &lt;div&gt;
+        </motion.div>
+        
+        <motion.div 
+          className="absolute text-sm text-indigo-500/60 dark:text-indigo-400/60 font-mono font-bold"
+          animate={{
+            y: [0, 15, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          style={{
+            right: '15%',
+            top: '30%'
+          }}
+        >
+          &lt;/div&gt;
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-sm text-purple-500/60 dark:text-purple-400/60 font-mono font-bold"
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
           }}
           style={{
             left: '20%',
-            top: '20%'
+            bottom: '30%'
           }}
-        />
+        >
+          &lt;span&gt;
+        </motion.div>
+
         <motion.div 
-          className="absolute w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl"
+          className="absolute text-sm text-cyan-500/60 dark:text-cyan-400/60 font-mono font-bold"
           animate={{
-            x: mousePosition.x * -2,
-            y: mousePosition.y * -2,
-            scale: [1.1, 1, 1.1],
+            y: [0, 25, 0],
+            opacity: [0.4, 0.8, 0.4],
           }}
           transition={{
-            duration: 2,
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          style={{
+            right: '30%',
+            top: '60%'
+          }}
+        >
+          &lt;button&gt;
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-sm text-emerald-500/60 dark:text-emerald-400/60 font-mono font-bold"
+          animate={{
+            y: [0, -15, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+          style={{
+            left: '35%',
+            top: '15%'
+          }}
+        >
+          &lt;/button&gt;
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-sm text-pink-500/60 dark:text-pink-400/60 font-mono font-bold"
+          animate={{
+            y: [0, 20, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5
+          }}
+          style={{
+            right: '10%',
+            bottom: '20%'
+          }}
+        >
+          &lt;input&gt;
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-sm text-orange-500/60 dark:text-orange-400/60 font-mono font-bold"
+          animate={{
+            y: [0, -25, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          style={{
+            left: '50%',
+            top: '25%'
+          }}
+        >
+          &lt;/input&gt;
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-sm text-teal-500/60 dark:text-teal-400/60 font-mono font-bold"
+          animate={{
+            y: [0, 18, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+          style={{
+            right: '40%',
+            bottom: '35%'
+          }}
+        >
+          &lt;form&gt;
+        </motion.div>
+
+        {/* QA Testing Icons */}
+        <motion.div 
+          className="absolute text-xl text-green-500/70 dark:text-green-400/70 font-bold"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            right: '25%',
+            bottom: '25%'
+          }}
+        >
+          ✓
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-xl text-red-500/70 dark:text-red-400/70 font-bold"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, -180, -360],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 3
+          }}
+          style={{
+            left: '15%',
+            top: '60%'
+          }}
+        >
+          ✗
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-green-500/70 dark:text-green-400/70 font-bold"
+          animate={{
+            scale: [1, 1.4, 1],
+            rotate: [0, 90, 180, 270, 360],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 1
+          }}
+          style={{
+            left: '25%',
+            top: '45%'
+          }}
+        >
+          ✓
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-red-500/70 dark:text-red-400/70 font-bold"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -90, -180, -270, -360],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 2
+          }}
+          style={{
+            right: '15%',
+            top: '45%'
+          }}
+        >
+          ✗
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-green-500/70 dark:text-green-400/70 font-bold"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 120, 240, 360],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 4
+          }}
+          style={{
+            left: '40%',
+            bottom: '15%'
+          }}
+        >
+          ✓
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-red-500/70 dark:text-red-400/70 font-bold"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -120, -240, -360],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 5
+          }}
+          style={{
+            right: '35%',
+            top: '15%'
+          }}
+        >
+          ✗
+        </motion.div>
+
+        {/* Additional QA Icons */}
+        <motion.div 
+          className="absolute text-lg text-blue-500/70 dark:text-blue-400/70 font-bold"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 45, 90, 135, 180],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 3
+          }}
+          style={{
+            left: '60%',
+            top: '35%'
+          }}
+        >
+          🔍
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-purple-500/70 dark:text-purple-400/70 font-bold"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -45, -90, -135, -180],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 1
+          }}
+          style={{
+            right: '50%',
+            bottom: '45%'
+          }}
+        >
+          🧪
+        </motion.div>
+
+        <motion.div 
+          className="absolute text-lg text-orange-500/70 dark:text-orange-400/70 font-bold"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 60, 120, 180, 240, 300, 360],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 2
+          }}
+          style={{
+            left: '70%',
+            top: '25%'
+          }}
+        >
+          ⚡
+        </motion.div>
+
+        {/* Subtle Glowing Orbs */}
+        <motion.div 
+          className="absolute w-32 h-32 bg-blue-400/20 dark:bg-blue-300/20 rounded-full blur-xl"
+          animate={{
+            x: mousePosition.x * 0.5,
+            y: mousePosition.y * 0.5,
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 3,
             ease: "easeOut",
             scale: {
               repeat: Infinity,
-              duration: 10,
-              delay: 1
+              duration: 6
+            }
+          }}
+          style={{
+            left: '30%',
+            top: '40%'
+          }}
+        />
+        
+        <motion.div 
+          className="absolute w-40 h-40 bg-indigo-400/20 dark:bg-indigo-300/20 rounded-full blur-xl"
+          animate={{
+            x: mousePosition.x * -0.3,
+            y: mousePosition.y * -0.3,
+            scale: [1.2, 1, 1.2],
+          }}
+          transition={{
+            duration: 4,
+            ease: "easeOut",
+            scale: {
+              repeat: Infinity,
+              duration: 8,
+              delay: 2
             }
           }}
           style={{
             right: '20%',
-            bottom: '20%'
+            bottom: '40%'
           }}
         />
       </div>

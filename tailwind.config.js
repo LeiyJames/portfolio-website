@@ -25,15 +25,6 @@ export default {
           900: '#0c4a6e',
         },
       },
-      animation: {
-        'spotlight': 'spotlight 2s ease .75s 1 forwards',
-      },
-      keyframes: {
-        spotlight: {
-          '0%': { opacity: 0, transform: 'scale(0.9)' },
-          '100%': { opacity: 1, transform: 'scale(1)' },
-        },
-      },
     },
   },
   plugins: [],

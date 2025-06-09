@@ -3,6 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "browserslist": {
+    "production": [
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 Edge versions",
+      "not IE 11"
+    ],
+    "development": [
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 Edge versions"
+    ]
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,10 +42,15 @@
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-transform-runtime": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/runtime": "^7.27.6",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.21",
+    "core-js": "^3.42.0",
     "eslint": "^8.55.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -38,5 +58,8 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "vite": "^5.0.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

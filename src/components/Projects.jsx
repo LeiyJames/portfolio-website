@@ -38,6 +38,7 @@ const projects = [
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0)
   const projectsPerPage = 6
   const totalPages = Math.ceil(projects.length / projectsPerPage)
   
@@ -60,8 +61,17 @@ const Projects = () => {
     })
   }
 
+  const nextCarousel = () => {
+    setCurrentCarouselIndex((prev) => (prev + 1) % projects.length)
+  }
+
+  const prevCarousel = () => {
+    setCurrentCarouselIndex((prev) => (prev - 1 + projects.length) % projects.length)
+  }
+
   useEffect(() => {
     setCurrentPage(1)
+    setCurrentCarouselIndex(0)
   }, [])
 
   const containerVariants = {
@@ -90,6 +100,23 @@ const Projects = () => {
     }
   }
 
+  const carouselVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  }
+
   return (
     <section id="projects">
       <div className="section-container">
@@ -106,8 +133,122 @@ const Projects = () => {
           </p>
         </motion.div>
 
+        {/* Mobile Carousel */}
+        <div className="md:hidden">
+          <div className="relative overflow-hidden rounded-xl">
+            <motion.div
+              key={currentCarouselIndex}
+              custom={1}
+              variants={carouselVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="w-full"
+            >
+              <div className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300 mb-12">
+                <motion.div 
+                  className="relative aspect-video mb-4 overflow-hidden rounded-lg"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={projects[currentCarouselIndex].image}
+                    alt={projects[currentCarouselIndex].title}
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </motion.div>
+                
+                <motion.h3 
+                  className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors duration-300"
+                >
+                  {projects[currentCarouselIndex].title}
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-gray-600 dark:text-gray-300 mb-4"
+                >
+                  {projects[currentCarouselIndex].description}
+                </motion.p>
+                
+                <motion.div 
+                  className="flex flex-wrap gap-2 mb-4"
+                >
+                  {projects[currentCarouselIndex].tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-2 py-1 text-sm bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </motion.div>
+                
+                <motion.div 
+                  className="flex justify-between items-center"
+                >
+                  <a
+                    href={projects[currentCarouselIndex].github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={projects[currentCarouselIndex].demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-primary transform hover:scale-105 transition-transform duration-300"
+                  >
+                    <span>Live Demo</span>
+                  </a>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Carousel Navigation */}
+            <button
+              onClick={prevCarousel}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 dark:bg-gray-800/80 rounded-full shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors duration-300 z-10"
+            >
+              <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={nextCarousel}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 dark:bg-gray-800/80 rounded-full shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors duration-300 z-10"
+            >
+              <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Carousel Indicators */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentCarouselIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                    index === currentCarouselIndex
+                      ? 'bg-primary-600'
+                      : 'bg-gray-300 dark:bg-gray-600'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -192,10 +333,10 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Pagination */}
+        {/* Desktop Pagination */}
         {totalPages > 1 && (
           <motion.div 
-            className="flex justify-center items-center space-x-2 mt-12"
+            className="hidden md:flex justify-center items-center space-x-2 mt-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}

@@ -16,20 +16,10 @@ import MobileNav from './components/MobileNav'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     document.documentElement.classList.add('dark')
-
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e
-      document.documentElement.style.setProperty('--mouse-x', `${clientX}px`)
-      document.documentElement.style.setProperty('--mouse-y', `${clientY}px`)
-      setMousePosition({ x: clientX, y: clientY })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
     
     // Simulate loading time
     const timer = setTimeout(() => {
@@ -37,7 +27,6 @@ function App() {
     }, 2000)
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
       clearTimeout(timer)
     }
   }, [])
@@ -53,9 +42,6 @@ function App() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Spotlight overlay */}
-      <div className="fixed inset-0 spotlight pointer-events-none" />
-      
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
