@@ -78,32 +78,10 @@ export default defineConfig({
       },
     },
     cssCodeSplit: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        // Use modern syntax
-        ecma: 2020,
-        // Remove unused code
-        dead_code: true,
-        // Remove unused variables
-        unused: true,
-        // Remove unused functions
-        passes: 3
-      },
-      mangle: {
-        // Keep class names for React components
-        keep_classnames: true,
-        // Keep function names for debugging
-        keep_fnames: true
-      },
-      format: {
-        // Use modern syntax
-        ecma: 2020,
-        // Remove comments
-        comments: false
-      }
+    minify: 'esbuild',
+    esbuild: {
+      drop: ['console', 'debugger'],
+      target: 'es2020'
     }
   },
   optimizeDeps: {
