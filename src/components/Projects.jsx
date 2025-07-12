@@ -3,28 +3,11 @@ import { useState, useEffect } from 'react'
 
 const projects = [
   {
-    title: 'CourseHub Funnel Website',
-    description: 'A modern landing page offering a free 3-part digital marketing mini-course. Built with Next.js and Tailwind CSS.',
-    image: '/images/Coursehub.png',
-    github: 'https://github.com/LeiyJames/CourseHub-Funnel?tab=readme-ov-file',
-    demo: 'https://v0-modern-funnel-website.vercel.app/',
-    tags: ['TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Responsive', 'React']
-  },
-  {
-    title: 'Real Estate Pro Website',
-    description: 'A modern real estate website built with Next.js, designed to showcase properties, connect buyers with agents, and provide a seamless user experience. Deployed on Vercel',
-    image: '/images/Realpro.png',
-    github: 'https://github.com/LeiyJames/Funnel-Real-Estate-Pro',
-    demo: 'https://v0-real-estate-pro-website.vercel.app/',
-    tags: ['TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Responsive', 'React']
-  },
-  {
-    title: 'Gym Funnel Website',
-    description: 'A modern conversion-focused website for gym/fitness businesses, built using Vercels v0 generative UI system.',
-    image: '/images/gym.png',
-    github: 'https://github.com/LeiyJames/Gym-Funnel-Website',
-    demo: 'https://v0-gym-funnel-website.vercel.app/',
-    tags: ['TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Responsive', 'React']
+    title: 'USANA Health Sciences Website',
+    description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
+    image: '/images/usana.png',
+    demo: 'https://usana-ten.vercel.app/',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce', 'Responsive', 'React']
   },
   {
     title: 'NovaReach Website',
