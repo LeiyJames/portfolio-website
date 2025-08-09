@@ -6,7 +6,7 @@ const projects = [
     title: 'USANA Health Sciences Website',
     description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
     image: '/images/usana.png',
-    demo: 'https://usana-ten.vercel.app/',
+    demo: 'https://agnes-usanaph.netlify.app/',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce', 'Responsive', 'React']
   },
   {
