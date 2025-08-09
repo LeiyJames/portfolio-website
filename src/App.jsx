@@ -10,6 +10,7 @@ import WorkExperience from './components/WorkExperience'
 import Certificates from './components/Certificates'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 import Loader from './components/Loader'
 import ThemeToggle from './components/ThemeToggle'
 import MobileNav from './components/MobileNav'
@@ -97,7 +98,7 @@ function App() {
       </header>
 
       {/* Mobile Navigation */}
-      <MobileNav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <MobileNav />
 
       {/* Main content */}
       <main className="pt-16">
@@ -111,6 +112,7 @@ function App() {
       </main>
 
       <Footer />
+      <BackToTop />
     </div>
   )
 }

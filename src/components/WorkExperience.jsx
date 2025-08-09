@@ -101,7 +101,7 @@ const WorkExperience = () => {
               <motion.div
                 key={exp.title}
                 variants={itemVariants}
-                className={`flex flex-col md:flex-row gap-8 mb-12 relative ${
+                className={`flex flex-col md:flex-row gap-6 md:gap-8 mb-8 md:mb-12 relative ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
@@ -120,16 +120,16 @@ const WorkExperience = () => {
 
                 {/* Content */}
                 <motion.div 
-                  className={`w-full md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+                  className={`w-full md:w-1/2 p-5 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md md:shadow-lg hover:shadow-xl transition-shadow duration-300 ${
                     index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
                   }`}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.01 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <motion.h3 
-                        className="text-xl font-bold"
+                        className="text-lg sm:text-xl font-semibold"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
@@ -155,7 +155,7 @@ const WorkExperience = () => {
                     </motion.span>
                   </div>
                   <motion.p 
-                    className="text-gray-600 dark:text-gray-300 mb-4"
+                    className="text-gray-600 dark:text-gray-300 mb-4 text-sm sm:text-base"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
@@ -163,7 +163,7 @@ const WorkExperience = () => {
                     {exp.description}
                   </motion.p>
                   <motion.div 
-                    className="flex flex-wrap gap-2"
+                    className="flex flex-wrap md:flex-wrap gap-2 overflow-x-auto md:overflow-visible -mx-1 px-1 whitespace-nowrap md:whitespace-normal"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -173,7 +173,7 @@ const WorkExperience = () => {
                       <motion.span
                         key={skillIndex}
                         variants={skillVariants}
-                        className="px-3 py-1 text-sm bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full hover:scale-105 transition-transform duration-300"
+                        className="px-3 py-1 text-sm bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full hover:scale-105 transition-transform duration-300 shrink-0"
                       >
                         {skill}
                       </motion.span>

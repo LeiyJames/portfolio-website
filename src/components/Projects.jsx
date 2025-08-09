@@ -17,6 +17,14 @@ const projects = [
     demo: 'https://nova-reach-website.vercel.app/',
     tags: ['TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Responsive', 'React']
   },
+  {
+    title: 'Cooking Show - Filipino Recipes',
+    description: 'A beautiful, modern cooking app built with Next.js 14, featuring authentic Filipino recipes with step-by-step instructions, interactive timers, and advanced cooking features.',
+    image: '/images/cook.png',
+    github: 'https://github.com/LeiyJames/Cooking-show',
+    demo: 'https://cooking-show.netlify.app/',
+    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Lucide React']
+  },
 ]
 
 const Projects = () => {
@@ -56,6 +64,12 @@ const Projects = () => {
     setCurrentPage(1)
     setCurrentCarouselIndex(0)
   }, [])
+
+  const handleSwipe = (offsetX, velocityX) => {
+    const swipe = Math.abs(offsetX) * velocityX
+    if (offsetX < -100 || swipe < -1000) nextCarousel()
+    if (offsetX > 100 || swipe > 1000) prevCarousel()
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -131,6 +145,9 @@ const Projects = () => {
                 opacity: { duration: 0.2 }
               }}
               className="w-full"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, info) => handleSwipe(info.offset.x, info.velocity.x)}
             >
               <div className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300 mb-12">
                 <motion.div 
@@ -173,14 +190,16 @@ const Projects = () => {
                 <motion.div 
                   className="flex justify-between items-center"
                 >
-                  <a
-                    href={projects[currentCarouselIndex].github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
-                  >
-                    GitHub
-                  </a>
+                  {projects[currentCarouselIndex].github && (
+                    <a
+                      href={projects[currentCarouselIndex].github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
+                    >
+                      GitHub
+                    </a>
+                  )}
                   <a
                     href={projects[currentCarouselIndex].demo}
                     target="_blank"
@@ -193,24 +212,7 @@ const Projects = () => {
               </div>
             </motion.div>
 
-            {/* Carousel Navigation */}
-            <button
-              onClick={prevCarousel}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 dark:bg-gray-800/80 rounded-full shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors duration-300 z-10"
-            >
-              <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            <button
-              onClick={nextCarousel}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/80 dark:bg-gray-800/80 rounded-full shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors duration-300 z-10"
-            >
-              <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            {/* Swipe navigation enabled; arrows removed on mobile */}
 
             {/* Carousel Indicators */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
@@ -295,14 +297,16 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 viewport={{ once: false }}
               >
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
-                >
-                  GitHub
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
+                  >
+                    GitHub
+                  </a>
+                )}
                 <a
                   href={project.demo}
                   target="_blank"

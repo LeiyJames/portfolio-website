@@ -5,12 +5,10 @@ import {
   UserIcon, 
   FolderIcon, 
   BriefcaseIcon, 
-  EnvelopeIcon,
-  SunIcon,
-  MoonIcon
+  EnvelopeIcon
 } from '@heroicons/react/24/outline'
 
-const MobileNav = ({ isDarkMode, toggleDarkMode }) => {
+const MobileNav = () => {
   const navLinks = [
     { 
       to: "about", 
@@ -65,23 +63,7 @@ const MobileNav = ({ isDarkMode, toggleDarkMode }) => {
             )
           })}
 
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleDarkMode}
-            className="group relative p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? (
-              <SunIcon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
-            ) : (
-              <MoonIcon className="w-6 h-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
-            )}
-            
-            {/* Tooltip */}
-            <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-            </span>
-          </button>
+          {/* Theme toggle removed on mobile to avoid overlap with Back-To-Top */}
         </nav>
       </motion.div>
     </div>
