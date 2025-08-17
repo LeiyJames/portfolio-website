@@ -1,0 +1,5 @@
+[33m288b6ff[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat: redesign certificates page with categories and modal, improve About Me and Work Experience descriptions, add swipe navigation, enhance animations
+[33m3ebad38[m[33m ([m[1;31morigin/main[m[33m)[m chore: update USANA live demo URL to agnes-usanaph.netlify.app
+[33m3d20031[m feat: add Cooking Show project, swipe gestures for mobile carousels, mobile UX tweaks for Work Experience, BackToTop button, remove mobile theme toggle, replace favicon with logo.png
+[33m762a469[m feat: Update Projects section - Remove old projects and add USANA website
+[33m58a6691[m Fix Vercel deployment issues: add terser, switch to esbuild, remove Node.js engine requirement, fix CSS imports
