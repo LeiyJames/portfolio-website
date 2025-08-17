@@ -5,14 +5,14 @@ const experiences = [
     title: "Software QA Tester",
     company: "GoodApps Inc.",
     period: "2025 - Present",
-    description: "Collaborated with the development team to create and execute test plans, identified and reported defects, and ensured the quality of the software meets the requirements.",
-    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "UX Testing", "Regression Testing","Agile"]
+    description: "Collaborated with cross-functional development teams to design comprehensive test strategies, execute detailed test plans across multiple platforms, and identified critical defects early in the development cycle. Ensured software quality standards through systematic testing methodologies and continuous process improvement.",
+    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "API Testing", "Database Validation", "Basic Automation Testing", "Basic Performance Testing", "Regression Testing", "Agile"]
   },
   {
     title: "Software QA Tester - Internship",
     company: "ASV Business Solutions",
     period: "3 months",
-    description: "Performed manual testing of web applications, created test cases and documentation, and participated in agile development processes.",
+    description: "Gained hands-on experience in manual testing of web applications while working closely with senior QA engineers. Created comprehensive test cases and documentation, executed functional and regression testing, and actively participated in agile development ceremonies including daily standups and sprint retrospectives.",
     skills: ["Test Case Creation", "Manual Testing", "Pentest", "Performance Testing", "Black Box Testing", "Regression Testing"]
   },
   {

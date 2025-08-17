@@ -1,0 +1,10 @@
+Certificate Images Directory
+
+Please add your certificate images here with the following names:
+- data1.png (Foundations: Data, Data, Everywhere - Google)
+- front1.png (Build a Full Website using WordPress - Coursera Project Network)
+- tech1.png (Technical Support Fundamentals - Google)
+- tech2.png (The Bits and Bytes of Computer Networking - Google)
+- cyber1.png (Foundations of Cybersecurity - Google)
+
+You can add more certificates by updating the certificates object in src/components/Certificates.jsx

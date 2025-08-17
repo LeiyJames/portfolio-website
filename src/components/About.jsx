@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion'
 
 const techStack = [
-  { name: 'HTML', icon: '🌐' },
-  { name: 'CSS', icon: '🎨' },
   { name: 'JavaScript', icon: '⚡' },
   { name: 'React', icon: '⚛️' },
+  { name: 'Next', icon: '▲' },
   { name: 'Tailwind', icon: '🌊' },
   { name: 'Manual Test', icon: '🔍' },
   { name: 'Playwright', icon: '🤖' },
   { name: 'JIRA', icon: '📋' },
+  { name: 'And More', icon: '✨' },
 ]
 
 const About = () => {
@@ -66,7 +66,7 @@ const About = () => {
         >
           <h2 className="heading-secondary mb-4">About Me</h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A Software QA Tester with a growing passion for frontend development and sales funnel automation.
+            A passionate Software QA Engineer transitioning into frontend development, with expertise in quality assurance, frontend technologies, and automation solutions.
           </p>
         </motion.div>
 
@@ -81,7 +81,7 @@ const About = () => {
               variants={itemVariants}
               className="text-lg text-gray-600 dark:text-gray-300 mb-12"
             >
-              My journey began in Quality Assurance, where I developed a keen eye for detail and a deep understanding of what makes great software. This foundation in QA has given me a unique perspective as I transition into frontend development, allowing me to create not just visually appealing interfaces, but truly user-focused experiences. I'm passionate about automation and constantly seeking ways to streamline processes and improve efficiency.
+              My professional journey started in Quality Assurance, where I cultivated a meticulous attention to detail and developed comprehensive understanding of software quality standards. This solid QA foundation provides me with a unique advantage as I expand into frontend development, enabling me to build not only visually stunning interfaces but also robust, user-centric applications with quality built-in from the ground up. I'm driven by a passion for automation, continuous learning, and finding innovative solutions to complex technical challenges.
             </motion.p>
 
             {/* Tech Stack */}
