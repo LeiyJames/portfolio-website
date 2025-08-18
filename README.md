@@ -4,7 +4,6 @@ A modern, responsive portfolio website built with React and Tailwind CSS. Featur
 
 - Dark/Light mode toggle
 - Smooth scrolling navigation
-- Spotlight effect in dark mode
 - Responsive design
 - Interactive UI elements
 - Section-based layout
