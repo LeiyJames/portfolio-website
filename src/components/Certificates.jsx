@@ -53,6 +53,56 @@ const certificates = {
   ],
   'software-qa': [
     // Add QA certificates here when available
+  ],
+  'ai-essentials': [
+    {
+      name: 'Google AI Essentials',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '🤖',
+      image: '/images/certificates/aimain.png',
+      url: 'https://www.coursera.org/account/accomplishments/specialization/C4CHANPS7CNE'
+    },
+    {
+      name: 'Introduction to AI',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '🧠',
+      image: '/images/certificates/ai1.png',
+      url: 'https://www.coursera.org/account/accomplishments/verify/S8FBJEZC6BMJ'
+    },
+    {
+      name: 'Maximize Productivity With AI Tools',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '⚡',
+      image: '/images/certificates/ai2.png',
+      url: 'https://www.coursera.org/account/accomplishments/verify/RWNDGPH24X2G'
+    },
+    {
+      name: 'Discover the Art of Prompting',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '💬',
+      image: '/images/certificates/ai3.png',
+      url: 'https://www.coursera.org/account/accomplishments/verify/UO35TIBGKIM4'
+    },
+    {
+      name: 'Use AI Responsibly',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '👁️',
+      image: '/images/certificates/ai4.png',
+      url: 'https://www.coursera.org/account/accomplishments/verify/YHONA5LQB3OR'
+    },
+    {
+      name: 'Stay Ahead of the AI Curve',
+      platform: 'Google',
+      date: 'August 2025',
+      icon: '⚖️',
+      image: '/images/certificates/ai5.png',
+      url: 'https://www.coursera.org/account/accomplishments/verify/EDL1TIXN4KBV'
+    }
   ]
 }
 
@@ -62,7 +112,8 @@ const categories = [
   { key: 'front-end', label: 'Front-End', icon: '💻' },
   { key: 'cybersecurity', label: 'Cybersecurity', icon: '🛡️' },
   { key: 'software-qa', label: 'Software QA', icon: '🧪' },
-  { key: 'data-analyst', label: 'Data Analyst', icon: '📊' }
+  { key: 'data-analyst', label: 'Data Analyst', icon: '📊' },
+  { key: 'ai-essentials', label: 'AI Essentials', icon: '🤖' }
 ]
 
 const Certificates = () => {

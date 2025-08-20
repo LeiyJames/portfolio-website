@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import LightRays from './LightRays'
 
 const techStack = [
   { name: 'JavaScript', icon: '⚡' },
@@ -55,8 +56,24 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="bg-gray-50 dark:bg-gray-800/50">
-      <div className="section-container">
+    <section id="about" className="bg-gray-50 dark:bg-gray-800/50 relative overflow-hidden">
+      {/* LightRays Background Effect */}
+      <div className="absolute inset-0 w-full h-full">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="opacity-30"
+        />
+      </div>
+      
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
