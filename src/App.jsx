@@ -16,11 +16,12 @@ import ThemeToggle from './components/ThemeToggle'
 import MobileNav from './components/MobileNav'
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    document.documentElement.classList.add('dark')
+    // Remove dark class to ensure light mode by default
+    document.documentElement.classList.remove('dark')
     
     // Simulate loading time
     const timer = setTimeout(() => {

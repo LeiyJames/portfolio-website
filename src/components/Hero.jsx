@@ -17,10 +17,14 @@ const Hero = () => {
       setCurrentTime(new Date())
     }, 60000)
 
-    // Check availability based on time (example: available between 9 AM and 6 PM)
+    // Check availability based on time (8:00 AM - 6:00 PM working, 7:00 PM - 3:00 AM available)
     const checkAvailability = () => {
       const hour = new Date().getHours()
-      setIsAvailable(hour >= 9 && hour < 18)
+      // Working hours: 8:00 AM (8) to 6:00 PM (18)
+      const isWorkingHours = hour >= 8 && hour < 18
+      // Available hours: 7:00 PM (19) to 3:00 AM (3)
+      const isAvailableHours = hour >= 19 || hour < 3
+      setIsAvailable(!isWorkingHours && isAvailableHours)
     }
     checkAvailability()
 
@@ -518,18 +522,18 @@ const Hero = () => {
               className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400"
             >
               <span className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 {formatTime(currentTime)} GMT+8
               </span>
               <span className={`flex items-center gap-2 ${isAvailable ? 'text-green-500' : 'text-gray-500'}`}>
                 <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500' : 'bg-gray-500'}`}></span>
-                {isAvailable ? 'Available for Work' : 'Currently Working'}
+                {isAvailable ? 'Available for Work (7:00 PM - 3:00 AM)' : 'Currently Working (8:00 AM - 6:00 PM)'}
               </span>
               <span className="flex items-center gap-2">
-                <MapPinIcon className="w-4 h-4" />
-                Philippines
+                <MapPinIcon className="w-4 h-4 text-red-600" />
+                <span className="philippines-text">Philippines</span>
               </span>
             </motion.div>
 

@@ -53,6 +53,11 @@
     content: none;
   }
 
+  .button-primary-simple {
+    @apply relative inline-flex items-center justify-center rounded-lg bg-primary-600 text-white border-none text-center text-base transition-colors duration-200 cursor-pointer hover:bg-primary-700;
+    min-width: 130px;
+  }
+
   @keyframes greentopBubbles {
     /* We can remove this animation since it's no longer used */
   }
@@ -174,6 +179,32 @@
   .logo-link:hover::before,
   .logo-link:hover::after {
     @apply w-full;
+  }
+
+  .philippines-text {
+    @apply font-semibold;
+    background: linear-gradient(
+      90deg,
+      #0038A8 33%, /* Philippine Blue */
+      #FCD116 66%, /* Philippine Yellow */
+      #CE1126 100% /* Philippine Red */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: philippinesGradient 6s linear infinite;
+  }
+
+  @keyframes philippinesGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }
 

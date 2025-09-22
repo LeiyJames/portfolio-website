@@ -53,10 +53,10 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="button-primary inline-flex items-center gap-2 relative group overflow-hidden"
+              className="button-primary-simple text-sm sm:text-base px-6 py-2 sm:px-8 sm:py-3"
             >
-              <span className="relative z-10">Download Resume</span>
-              <ArrowDownIcon className="w-5 h-5 transform group-hover:translate-y-1 transition-transform duration-300" />
+              <span>Download Resume</span>
+              <ArrowDownIcon className="w-5 h-5 ml-2" />
             </motion.a>
           </motion.div>
         </motion.div>

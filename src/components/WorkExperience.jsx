@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 const experiences = [
   {
@@ -25,6 +26,18 @@ const experiences = [
 ] 
 
 const WorkExperience = () => {
+  const timelineRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -81,14 +94,17 @@ const WorkExperience = () => {
           <p className="text-lg text-gray-600 dark:text-gray-300">My professional journey in tech</p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
+        <div className="relative" ref={timelineRef}>
+          {/* Timeline background line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700" />
+          
+          {/* Animated blue timeline line */}
           <motion.div 
-            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-700"
-            initial={{ height: 0 }}
-            whileInView={{ height: "100%" }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 1 }}
+            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-primary-600 origin-top z-20"
+            style={{ 
+              scaleY: scaleY,
+              height: "100%"
+            }}
           />
 
           <motion.div
@@ -105,23 +121,11 @@ const WorkExperience = () => {
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Timeline dot */}
-                <motion.div 
-                  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full z-10"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: false }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                  style={{ 
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                />
 
                 {/* Content */}
                 <motion.div 
                   className={`w-full md:w-1/2 p-5 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md md:shadow-lg hover:shadow-xl transition-shadow duration-300 ${
-                    index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                    index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'
                   }`}
                   whileHover={{ scale: 1.01 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
