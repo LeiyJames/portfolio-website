@@ -1,10 +1,10 @@
-@import './styles/Loader.css';
-@import './styles/ThemeToggle.css';
-
 /* Base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './styles/Loader.css';
+@import './styles/ThemeToggle.css';
 
 @layer base {
   body {

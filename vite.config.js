@@ -4,6 +4,12 @@ import { splitVendorChunkPlugin } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    host: true, // Listen on all addresses, including network
+  },
+  css: {
+    postcss: './postcss.config.cjs',
+  },
   plugins: [
     react({
       // Only use React 17+ features
