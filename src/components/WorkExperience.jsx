@@ -7,7 +7,7 @@ const experiences = [
     company: "GoodApps Inc.",
     period: "2025 - Present",
     description: "Collaborated with cross-functional development teams to design comprehensive test strategies, execute detailed test plans across multiple platforms, and identified critical defects early in the development cycle. Ensured software quality standards through systematic testing methodologies and continuous process improvement.",
-    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "API Testing", "Database Validation", "Basic Automation Testing", "Basic Performance Testing", "Regression Testing", "Agile"]
+    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "API Testing", "Database Validation", "Regression Testing", "Agile"]
   },
   {
     title: "Software QA Tester - Internship",
@@ -21,7 +21,7 @@ const experiences = [
     company: "Self-Employed",
     period: "2021 - Present",
     description: "Developed and maintained web applications using React, Typescript, and Supabase. Collaborated with the design team to implement new features and improve the user experience.",
-    skills: ["Web Development", "Frontend Development","React", "Typescript", "Supabase", "Tailwind CSS", "Framer Motion"]
+    skills: ["Web Development", "Frontend Development","React", "Next.js", "Svelte", "Typescript", "Supabase", "Tailwind CSS", "Framer Motion"]
   }
 ] 
 

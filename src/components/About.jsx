@@ -1,15 +1,22 @@
 import { motion } from 'framer-motion'
-import LightRays from './LightRays'
+import ScrollVelocity from './ScrollVelocity'
 
 const techStack = [
-  { name: 'JavaScript', icon: '⚡' },
-  { name: 'React', icon: '⚛️' },
-  { name: 'Next', icon: '▲' },
-  { name: 'Tailwind', icon: '🌊' },
-  { name: 'Manual Test', icon: '🔍' },
-  { name: 'Playwright', icon: '🤖' },
-  { name: 'JIRA', icon: '📋' },
-  { name: 'And More', icon: '✨' },
+  { name: 'Postman', icon: 'https://cdn.simpleicons.org/postman/FF6C37' },
+  { name: 'Python', icon: 'https://cdn.simpleicons.org/python/3776AB' },
+  { name: 'Burp Suite', icon: 'https://cdn.simpleicons.org/burpsuite/FF6633' },
+  { name: 'HTML', icon: 'https://cdn.simpleicons.org/html5/E34F26' },
+  { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+  { name: 'Tailwind CSS', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/000000', className: 'dark:invert' },
+  { name: 'Vue', icon: 'https://cdn.simpleicons.org/vuedotjs/4FC08D' },
+  { name: 'Vite', icon: 'https://cdn.simpleicons.org/vite/646CFF' },
+  { name: 'Svelte', icon: 'https://cdn.simpleicons.org/svelte/FF3E00' },
+  { name: 'Framer Motion', icon: 'https://cdn.simpleicons.org/framer/0055FF' },
+  { name: 'Motion One', icon: 'https://avatars.githubusercontent.com/u/106745794?s=200&v=4' },
 ]
 
 const About = () => {
@@ -39,40 +46,31 @@ const About = () => {
     }
   }
 
-  const techItemVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.8
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  }
+  const midpoint = Math.ceil(techStack.length / 2)
+  const row1 = techStack.slice(0, midpoint)
+  const row2 = techStack.slice(midpoint)
+
+  const TechRow = ({ items }) => (
+    <div className="flex items-center">
+      {items.map((tech, index) => (
+        <div 
+          key={index} 
+          className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 mx-2 md:mx-4 bg-white dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+          title={tech.name}
+        >
+          <img 
+            src={tech.icon} 
+            alt={tech.name} 
+            className={`w-8 h-8 md:w-10 md:h-10 object-contain ${tech.className || ''}`}
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  )
 
   return (
     <section id="about" className="bg-gray-50 dark:bg-gray-800/50 relative overflow-hidden">
-      {/* LightRays Background Effect */}
-      <div className="absolute inset-0 w-full h-full">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#00ffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="opacity-30"
-        />
-      </div>
-      
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,66 +81,44 @@ const About = () => {
         >
           <h2 className="heading-secondary mb-4">About Me</h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A passionate Software QA Engineer transitioning into frontend development, with expertise in quality assurance, frontend technologies, and automation solutions.
+            A passionate Software QA Tester who are also into Frontend Development and Data Wrangling.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "-100px" }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg text-gray-600 dark:text-gray-300 mb-12"
-            >
-              My professional journey started in Quality Assurance, where I cultivated a meticulous attention to detail and developed comprehensive understanding of software quality standards. This solid QA foundation provides me with a unique advantage as I expand into frontend development, enabling me to build not only visually stunning interfaces but also robust, user-centric applications with quality built-in from the ground up. I'm driven by a passion for automation, continuous learning, and finding innovative solutions to complex technical challenges.
-            </motion.p>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-12 text-justify">
+              My journey began in Quality Assurance, where I developed a sharp eye for detail and a deep understanding of software reliability. This background gives me a unique edge in Frontend Development, allowing me to build interfaces that are not only visually engaging but also robust and user-friendly. Beyond coding, I also have a strong interest in Data Wrangling—transforming raw data into meaningful insights. I am driven by a passion for automation, continuous learning, and solving complex technical challenges efficiently.
+            </p>
 
-            {/* Tech Stack */}
-            <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
-            >
-              {techStack.map((tech, index) => (
-                <motion.div
-                  key={tech.name}
-                  variants={techItemVariants}
-                  whileHover={{ 
-                    scale: 1.1,
-                    transition: { type: "spring", stiffness: 400 }
-                  }}
-                  className="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-lg text-center group hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-                >
-                  <motion.span 
-                    className="text-4xl mb-2 block group-hover:scale-110 transition-transform duration-300"
-                    initial={{ rotate: 0 }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {tech.icon}
-                  </motion.span>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">
-                    {tech.name}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* Tech Stack - Desktop Only */}
+            <div className="hidden md:block w-full overflow-hidden mt-8 md:mt-12">
+              <ScrollVelocity
+                texts={[
+                  <TechRow key="row1" items={row1} />,
+                  <TechRow key="row2" items={row2} />
+                ]} 
+                velocity={30} 
+                className="py-2"
+              />
+            </div>
           </motion.div>
 
           {/* Profile Picture */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "-100px" }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="flex justify-center items-center"
           >
             <motion.div 
               className="relative w-64 h-64 md:w-96 md:h-96"
-              variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -175,6 +151,18 @@ const About = () => {
               </motion.div>
             </motion.div>
           </motion.div>
+
+          {/* Tech Stack - Mobile Scroll */}
+          <div className="md:hidden w-full overflow-hidden mt-8">
+            <ScrollVelocity
+              texts={[
+                <TechRow key="row1" items={row1} />,
+                <TechRow key="row2" items={row2} />
+              ]} 
+              velocity={30} 
+              className="py-2"
+            />
+          </div>
         </div>
       </div>
     </section>

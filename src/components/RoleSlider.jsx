@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 
 const roles = [
   { text: "Software QA Tester", color: "text-primary-600" },
-  { text: "Sales Funnel", color: "text-primary-600" }
+  { text: "Frontend Developer", color: "text-primary-600" },
+  { text: "Data Wrangler", color: "text-primary-600" }
 ]
 
 const RoleSlider = () => {

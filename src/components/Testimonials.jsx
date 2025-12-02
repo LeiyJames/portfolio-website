@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import DecryptedText from './DecryptedText'
 
 const testimonials = [
   {
@@ -44,14 +45,36 @@ const Testimonials = () => {
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
+                  <h3 className="font-semibold">
+                    <DecryptedText 
+                      text={testimonial.name} 
+                      animateOn="view" 
+                      revealDirection="center" 
+                      speed={100}
+                      maxIterations={20}
+                    />
+                  </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {testimonial.role} at {testimonial.company}
+                    <DecryptedText 
+                      text={testimonial.role} 
+                      animateOn="view" 
+                      revealDirection="center" 
+                      speed={100}
+                      maxIterations={20}
+                    />
+                    {' at '}
+                    <DecryptedText 
+                      text={testimonial.company} 
+                      animateOn="view" 
+                      revealDirection="center" 
+                      speed={100}
+                      maxIterations={20}
+                    />
                   </p>
                 </div>
               </div>
               <blockquote className="text-gray-600 dark:text-gray-300 italic">
-                "{testimonial.content}"
+                "<DecryptedText text={testimonial.content} animateOn="view" revealDirection="start" speed={80} maxIterations={25} />"
               </blockquote>
             </motion.div>
           ))}
