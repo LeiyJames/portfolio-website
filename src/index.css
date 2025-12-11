@@ -180,32 +180,6 @@
   .logo-link:hover::after {
     @apply w-full;
   }
-
-  .philippines-text {
-    @apply font-semibold;
-    background: linear-gradient(
-      90deg,
-      #0038A8 33%, /* Philippine Blue */
-      #FCD116 66%, /* Philippine Yellow */
-      #CE1126 100% /* Philippine Red */
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: philippinesGradient 6s linear infinite;
-  }
-
-  @keyframes philippinesGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 }
 
 :root {

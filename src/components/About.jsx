@@ -141,7 +141,7 @@ const About = () => {
                 className="relative rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl aspect-square"
               >
                 <img
-                  src="/images/profile.jpg"
+                  src="/images/graduation-photo.jpg"
                   alt="Profile photo"
                   className="w-full h-full object-cover"
                 />

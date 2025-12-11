@@ -190,10 +190,6 @@ const Hero = () => {
                 <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500' : 'bg-gray-500'}`}></span>
                 {isAvailable ? 'Available for Work (7:00 PM - 3:00 AM)' : 'Currently Working (8:00 AM - 6:00 PM)'}
               </span>
-              <span className="flex items-center gap-2">
-                <MapPinIcon className="w-4 h-4 text-red-600" />
-                <span className="philippines-text">Philippines</span>
-              </span>
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="heading-primary mb-6">

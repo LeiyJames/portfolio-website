@@ -6,8 +6,15 @@ const projects = [
     title: 'USANA Health Sciences Website',
     description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
     image: '/images/usana.png',
-    demo: 'https://agnes-usanaph.netlify.app/',
+    demo: 'https://demo-usanaph.netlify.app/',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce', 'Responsive', 'React']
+  },
+  {
+    title: 'Aura & Co. e-commerce store',
+    description: 'A modern, responsive e-commerce storefront built with Nuxt 3, Tailwind CSS, and Pinia. Features a fully functional shopping cart, product filtering, and a mock data layer for instant deployment.',
+    image: '/images/aura.png',
+    demo: 'https://demo-shopify1.netlify.app/',
+    tags: ['Nuxt 3', 'Tailwind CSS', 'Pinia', 'E-commerce', 'Responsive']
   },
   {
     title: 'NovaReach Website',
