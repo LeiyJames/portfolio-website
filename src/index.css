@@ -3,13 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './styles/Loader.css';
-@import './styles/ThemeToggle.css';
+@import "./styles/Loader.css";
+@import "./styles/ThemeToggle.css";
 
 @layer base {
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden;
     position: relative;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-400/80 hover:bg-primary-500 rounded-full transition-colors;
+  }
+
+  /* Text Selection */
+  ::selection {
+    @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
   }
 }
 
@@ -36,7 +54,7 @@
   }
 
   .button-primary span::after {
-    content: '»';
+    content: "»";
     @apply absolute opacity-0 top-0 -right-[15px] transition-all duration-500;
   }
 

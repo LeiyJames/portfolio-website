@@ -3,6 +3,14 @@ import { useState, useEffect } from 'react'
 
 const projects = [
   {
+    title: 'Code Rabbit Challenge',
+    description: 'A clean and modern showcase of coding challenges and solutions, built to demonstrate technical proficiency and problem-solving capabilities.',
+    image: '/images/dev.png',
+    github: 'https://github.com/LeiyJames/Code-Rabbit-Challenge-',
+    demo: 'https://leigh-devcode.netlify.app/',
+    tags: ['React', 'Tailwind CSS', 'JavaScript', 'Problem Solving']
+  },
+  {
     title: 'USANA Health Sciences Website',
     description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
     image: '/images/usana.png',

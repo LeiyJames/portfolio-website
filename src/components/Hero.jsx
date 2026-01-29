@@ -95,75 +95,28 @@ const Hero = () => {
   ]
 
   return (
-    <section id="hero" className="min-h-[85vh] flex items-center justify-center relative px-4 sm:px-6 py-12 sm:py-16 overflow-hidden">
-      {/* Modern Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900"></div>
+    <section id="hero" className="min-h-[90vh] flex items-center justify-center relative px-4 sm:px-6 py-12 sm:py-16 overflow-hidden">
+      {/* Modern Rich Gradient Background */}
+      <div className="absolute inset-0 bg-white dark:bg-gray-950 transition-colors duration-500"></div>
       
-      {/* Geometric Pattern Overlay */}
-      <div className="absolute inset-0 opacity-50 dark:opacity-40">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(139,92,246,0.2),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_60%,rgba(236,72,153,0.15),transparent_50%)]"></div>
+      {/* Mesh Gradients */}
+      <div className="absolute inset-0 opacity-80 dark:opacity-60 transition-opacity duration-500">
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-fuchsia-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+
+      {/* Dark mode mesh gradient corrections */}
+      <div className="absolute inset-0 opacity-0 dark:opacity-40 transition-opacity duration-500">
+         <div className="absolute top-0 -left-4 w-96 h-96 bg-primary-900 rounded-full filter blur-[128px] opacity-50"></div>
+         <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-900 rounded-full filter blur-[128px] opacity-50"></div>
       </div>
 
       {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 opacity-40 dark:opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(59,130,246,0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,130,246,0.2) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Subtle Glowing Orbs */}
-        <motion.div 
-          className="absolute w-32 h-32 bg-blue-400/20 dark:bg-blue-300/20 rounded-full blur-xl"
-          animate={{
-            x: mousePosition.x * 0.5,
-            y: mousePosition.y * 0.5,
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 3,
-            ease: "easeOut",
-            scale: {
-              repeat: Infinity,
-              duration: 6
-            }
-          }}
-          style={{
-            left: '30%',
-            top: '40%'
-          }}
-        />
-        
-        <motion.div 
-          className="absolute w-40 h-40 bg-indigo-400/20 dark:bg-indigo-300/20 rounded-full blur-xl"
-          animate={{
-            x: mousePosition.x * -0.3,
-            y: mousePosition.y * -0.3,
-            scale: [1.2, 1, 1.2],
-          }}
-          transition={{
-            duration: 4,
-            ease: "easeOut",
-            scale: {
-              repeat: Infinity,
-              duration: 8,
-              delay: 2
-            }
-          }}
-          style={{
-            right: '20%',
-            bottom: '40%'
-          }}
-        />
-      </div>
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{
+        backgroundImage: `linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)`,
+        backgroundSize: '4rem 4rem',
+      }}></div>
 
       <div className="section-container relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -178,49 +131,55 @@ const Hero = () => {
             {/* Time and Location Display */}
             <motion.div 
               variants={itemVariants}
-              className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400"
+              className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-4 text-sm font-medium"
             >
-              <span className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {formatTime(currentTime)} GMT+8
-              </span>
-              <span className={`flex items-center gap-2 ${isAvailable ? 'text-green-500' : 'text-gray-500'}`}>
-                <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500' : 'bg-gray-500'}`}></span>
-                {isAvailable ? 'Available for Work (7:00 PM - 3:00 AM)' : 'Currently Working (8:00 AM - 6:00 PM)'}
-              </span>
+              <div className="px-3 py-1.5 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-md border border-gray-200 dark:border-gray-700 flex items-center gap-2 text-gray-700 dark:text-gray-300 shadow-sm">
+                <MapPinIcon className="w-4 h-4 text-primary-500" />
+                <span>GMT+8</span>
+                <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+                <span>{formatTime(currentTime)}</span>
+              </div>
+              
+              <div className={`px-3 py-1.5 rounded-full backdrop-blur-md border shadow-sm flex items-center gap-2 transition-colors duration-300 ${
+                isAvailable 
+                  ? 'bg-green-50/50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300' 
+                  : 'bg-orange-50/50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300'
+              }`}>
+                <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500 animate-pulse' : 'bg-orange-500'}`}></span>
+                {isAvailable ? 'Available for Work' : 'Busy Working'}
+              </div>
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="heading-primary mb-6">
               <motion.span 
                 variants={itemVariants}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-2"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-2 font-medium text-gray-900 dark:text-white"
               >
                 Hi, I'm Leigh James
               </motion.span>
               <motion.div 
                 variants={itemVariants}
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl flex items-center justify-center md:justify-start gap-2"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl flex items-center justify-center md:justify-start gap-2 h-16 sm:h-auto"
               >
                 <RoleSlider />
               </motion.div>
             </motion.h1>
             
-            {/* Quick Stats */}
+            {/* Quick Stats - Glassmorphism */}
             <motion.div 
               variants={itemVariants}
-              className="grid grid-cols-3 gap-4 mb-8 max-w-md mx-auto md:mx-0"
+              className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto md:mx-0"
             >
               {stats.map((stat, index) => (
                 <motion.div 
                   key={index} 
-                  className="text-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="text-center p-4 rounded-2xl bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-white/20 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  whileHover={{ y: -5 }}
                 >
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
+                  <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-indigo-600 dark:from-primary-400 dark:to-indigo-400 mb-1 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide">{stat.label}</div>
+                  {/* Subtle shine effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </motion.div>
               ))}
             </motion.div>

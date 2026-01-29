@@ -70,34 +70,50 @@ const About = () => {
   )
 
   return (
-    <section id="about" className="bg-gray-50 dark:bg-gray-800/50 relative overflow-hidden">
+    <section id="about" className="relative overflow-hidden py-20">
+      {/* Subtle Background Mesh */}
+      <div className="absolute inset-0 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"></div>
+      <div className="absolute inset-0 opacity-30 dark:opacity-20">
+        <div className="absolute top-20 right-0 w-96 h-96 bg-primary-100 dark:bg-primary-900/30 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge"></div>
+        <div className="absolute bottom-20 left-0 w-96 h-96 bg-indigo-100 dark:bg-indigo-900/30 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge"></div>
+      </div>
+
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="heading-secondary mb-4">About Me</h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A passionate Software QA Tester who are also into Frontend Development and Data Wrangling.
+          <h2 className="heading-secondary mb-4 relative inline-block">
+            About Me
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-6 text-lg leading-relaxed">
+            A passionate Software QA Tester who is also into Frontend Development and Data Wrangling.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative"
           >
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-12 text-justify">
+            <div className="absolute -left-4 -top-4 w-20 h-20 bg-primary-200 dark:bg-primary-800/30 rounded-full blur-2xl opacity-50"></div>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-justify leading-relaxed relative z-10">
               My journey began in Quality Assurance, where I developed a sharp eye for detail and a deep understanding of software reliability. This background gives me a unique edge in Frontend Development, allowing me to build interfaces that are not only visually engaging but also robust and user-friendly. Beyond coding, I also have a strong interest in Data Wrangling—transforming raw data into meaningful insights. I am driven by a passion for automation, continuous learning, and solving complex technical challenges efficiently.
             </p>
+            
+            <div className="flex gap-4 mb-8">
+              <div className="h-1 w-20 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full"></div>
+            </div>
 
             {/* Tech Stack - Desktop Only */}
-            <div className="hidden md:block w-full overflow-hidden mt-8 md:mt-12">
+            <div className="hidden md:block w-full overflow-hidden">
               <ScrollVelocity
                 texts={[
                   <TechRow key="row1" items={row1} />,
@@ -111,44 +127,32 @@ const About = () => {
 
           {/* Profile Picture */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center relative"
           >
             <motion.div 
-              className="relative w-64 h-64 md:w-96 md:h-96"
-              whileHover={{ scale: 1.05 }}
+              className="relative w-72 h-72 md:w-96 md:h-96 group"
+              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Background blur effect */}
-              <motion.div 
-                className="absolute -inset-4 bg-primary-500/20 rounded-2xl blur-xl"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.3, 0.5]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              />
+              {/* Spinning border effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 via-indigo-500 to-primary-500 rounded-2xl opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500 animate-tilt"></div>
               
               {/* Profile Image Container */}
-              <motion.div 
-                className="relative rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl aspect-square"
-              >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-square bg-white dark:bg-gray-800 p-1">
+
                 <img
-                  src="/images/graduation-photo.jpg"
+                  src="/images/certificates/24678.png"
                   alt="Profile photo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-xl"
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-500/20 via-transparent to-transparent" />
-              </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-500/20 via-transparent to-transparent rounded-xl" />
+              </div>
             </motion.div>
           </motion.div>
 

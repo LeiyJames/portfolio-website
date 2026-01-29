@@ -25,7 +25,12 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="bg-white dark:bg-gray-900">
+    <section id="contact" className="relative overflow-hidden py-20 bg-gray-50 dark:bg-gray-800/50">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary-200 dark:bg-primary-900/30 rounded-full blur-3xl mix-blend-multiply"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-200 dark:bg-indigo-900/30 rounded-full blur-3xl mix-blend-multiply"></div>
+      </div>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
