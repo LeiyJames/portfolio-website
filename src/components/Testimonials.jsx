@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import DecryptedText from './DecryptedText'
 
 const testimonials = [
   {
@@ -22,13 +21,16 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="heading-secondary mb-4">What People Say</h2>
+          <h2 className="heading-secondary mb-4 relative inline-block">
+            What People Say
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Here's what clients and colleagues have to say about working with me.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
@@ -36,7 +38,7 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="card"
+              className="card w-full max-w-lg"
             >
               <div className="flex items-center mb-4">
                 <img
@@ -46,35 +48,17 @@ const Testimonials = () => {
                 />
                 <div>
                   <h3 className="font-semibold">
-                    <DecryptedText 
-                      text={testimonial.name} 
-                      animateOn="view" 
-                      revealDirection="center" 
-                      speed={100}
-                      maxIterations={20}
-                    />
+                    {testimonial.name}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    <DecryptedText 
-                      text={testimonial.role} 
-                      animateOn="view" 
-                      revealDirection="center" 
-                      speed={100}
-                      maxIterations={20}
-                    />
+                    {testimonial.role}
                     {' at '}
-                    <DecryptedText 
-                      text={testimonial.company} 
-                      animateOn="view" 
-                      revealDirection="center" 
-                      speed={100}
-                      maxIterations={20}
-                    />
+                    {testimonial.company}
                   </p>
                 </div>
               </div>
               <blockquote className="text-gray-600 dark:text-gray-300 italic">
-                "<DecryptedText text={testimonial.content} animateOn="view" revealDirection="start" speed={80} maxIterations={25} />"
+                "{testimonial.content}"
               </blockquote>
             </motion.div>
           ))}

@@ -188,7 +188,7 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0 px-4 md:px-0"
             >
-              A passionate Software QA Tester who is also into Frontend Development and Data Wrangling.
+              A passionate Software QA Tester who is also into Frontend Development and Data Analyst.
             </motion.p>
 
             <motion.div 

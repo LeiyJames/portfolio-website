@@ -3,25 +3,43 @@ import { useRef } from 'react'
 
 const experiences = [
   {
-    title: "Software QA Tester",
+    title: "Software QA Tester - Full-Time",
     company: "GoodApps Inc.",
-    period: "2025 - Present",
-    description: "Collaborated with cross-functional development teams to design comprehensive test strategies, execute detailed test plans across multiple platforms, and identified critical defects early in the development cycle. Ensured software quality standards through systematic testing methodologies and continuous process improvement.",
-    skills: ["Test Case Creation", "Usability Testing", "Black Box Testing", "API Testing", "Database Validation", "Regression Testing", "Agile"]
+    period: "2024 - Present",
+    description: [
+      "Collaborate with teams to plan and define test strategies",
+      "Design and document test cases and test data",
+      "Perform manual and automated testing",
+      "Log and track bugs, verify fixes",
+      "Maintain test plans, scripts, and reports",
+      "Suggest improvements to enhance software quality",
+      "Communicate clearly with developers and project teams"
+    ],
+    skills: ["Test Strategy", "Test Case Design", "Manual & Automated Testing", "Bug Tracking", "Test Planning", "Communication"]
   },
   {
     title: "Software QA Tester - Internship",
     company: "ASV Business Solutions",
-    period: "3 months",
-    description: "Gained hands-on experience in manual testing of web applications while working closely with senior QA engineers. Created comprehensive test cases and documentation, executed functional and regression testing, and actively participated in agile development ceremonies including daily standups and sprint retrospectives.",
-    skills: ["Test Case Creation", "Manual Testing", "Pentest", "Performance Testing", "Black Box Testing", "Regression Testing"]
+    period: "Feb 2024 - May 2024 · 4 mos",
+    description: [
+      "Developed and executed test plans and cases to ensure feature quality",
+      "Logged and tracked bugs using Jira; collaborated closely with developers",
+      "Performed manual, functional, regression, performance, and basic security testing",
+      "Simulated database load to test query response times and performance under stress",
+      "Created clear test reports and documentation to support future QA improvements"
+    ],
+    skills: ["Test Planning", "Jira", "Functional Testing", "Regression Testing", "Performance Testing", "Database Testing"]
   },
   {
     title: "Frontend Developer",
     company: "Self-Employed",
     period: "2021 - Present",
-    description: "Developed and maintained web applications using React, Typescript, and Supabase. Collaborated with the design team to implement new features and improve the user experience.",
-    skills: ["Web Development", "Frontend Development","React", "Next.js", "Svelte", "Typescript", "Supabase", "Tailwind CSS", "Framer Motion"]
+    description: [
+      "Developed and maintained web applications using React, Typescript, and Supabase",
+      "Collaborated with design teams to implement new features and improve user experience",
+      "Built responsive and interactive user interfaces using Tailwind CSS and Framer Motion"
+    ],
+    skills: ["React", "Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"]
   }
 ] 
 
@@ -90,7 +108,10 @@ const WorkExperience = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="heading-secondary mb-4">Work Experience</h2>
+          <h2 className="heading-secondary mb-4 relative inline-block">
+            Work Experience
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">My professional journey in tech</p>
         </motion.div>
 
@@ -158,14 +179,18 @@ const WorkExperience = () => {
                       {exp.period}
                     </motion.span>
                   </div>
-                  <motion.p 
+                  <motion.div 
                     className="text-gray-600 dark:text-gray-300 mb-4 text-sm sm:text-base"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                   >
-                    {exp.description}
-                  </motion.p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
                   <motion.div 
                     className="flex flex-wrap md:flex-wrap gap-2 overflow-x-auto md:overflow-visible -mx-1 px-1 whitespace-nowrap md:whitespace-normal"
                     variants={containerVariants}

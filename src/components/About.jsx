@@ -91,7 +91,7 @@ const About = () => {
             <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-6 text-lg leading-relaxed">
-            A passionate Software QA Tester who is also into Frontend Development and Data Wrangling.
+            A passionate Software QA Tester who is also into Frontend Development and Data Analyst.
           </p>
         </motion.div>
 
@@ -105,7 +105,7 @@ const About = () => {
           >
             <div className="absolute -left-4 -top-4 w-20 h-20 bg-primary-200 dark:bg-primary-800/30 rounded-full blur-2xl opacity-50"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-justify leading-relaxed relative z-10">
-              My journey began in Quality Assurance, where I developed a sharp eye for detail and a deep understanding of software reliability. This background gives me a unique edge in Frontend Development, allowing me to build interfaces that are not only visually engaging but also robust and user-friendly. Beyond coding, I also have a strong interest in Data Wrangling—transforming raw data into meaningful insights. I am driven by a passion for automation, continuous learning, and solving complex technical challenges efficiently.
+              My journey began in Quality Assurance, where I developed a sharp eye for detail and a deep understanding of software reliability. This background gives me a unique edge in Frontend Development, allowing me to build interfaces that are not only visually engaging but also robust and user-friendly. Beyond coding, I also have a strong interest in Data Analyst—transforming raw data into meaningful insights. I am driven by a passion for automation, continuous learning, and solving complex technical challenges efficiently.
             </p>
             
             <div className="flex gap-4 mb-8">

@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
 import { DocumentArrowDownIcon, ArrowDownIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xkgrvjbo")
+  const [showResumeModal, setShowResumeModal] = useState(false)
 
   if (state.succeeded) {
     return (
@@ -39,7 +41,10 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="heading-secondary mb-4">Get In Touch</h2>
+          <h2 className="heading-secondary mb-4 relative inline-block">
+            Get In Touch
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             I'm always open to new opportunities and collaborations. Feel free to reach out!
           </p>
@@ -52,18 +57,45 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6"
           >
-            <motion.a 
-              href="/FrontendDev.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <motion.button 
+              onClick={() => setShowResumeModal(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="button-primary-simple text-sm sm:text-base px-6 py-2 sm:px-8 sm:py-3"
             >
               <span>Download Resume</span>
               <ArrowDownIcon className="w-5 h-5 ml-2" />
-            </motion.a>
+            </motion.button>
           </motion.div>
+
+          {/* Resume Not Available Modal */}
+          {showResumeModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-2xl max-w-sm w-full border border-gray-200 dark:border-gray-700"
+              >
+                <div className="text-center">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30 mb-4">
+                    <DocumentArrowDownIcon className="h-6 w-6 text-yellow-600 dark:text-yellow-400" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Resume Not Available</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                    I'm currently updating my resume. Please check back later or contact me directly for a copy.
+                  </p>
+                  <button
+                    type="button"
+                    className="button-primary w-full justify-center"
+                    onClick={() => setShowResumeModal(false)}
+                  >
+                    <span>Close</span>
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">

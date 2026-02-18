@@ -281,7 +281,10 @@ const Certificates = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="heading-secondary mb-4">Certificates</h2>
+          <h2 className="heading-secondary mb-4 relative inline-block">
+            Certificates
+            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-indigo-500 rounded-full opacity-70"></div>
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Continuous learning is key in tech. Here are my certifications organized by specialization.
           </p>
