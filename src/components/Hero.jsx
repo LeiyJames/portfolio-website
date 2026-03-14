@@ -146,7 +146,7 @@ const Hero = () => {
                   : 'bg-orange-50/50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300'
               }`}>
                 <span className={`w-2 h-2 rounded-full ${isAvailable ? 'bg-green-500 animate-pulse' : 'bg-orange-500'}`}></span>
-                {isAvailable ? 'Available for Work' : 'Busy Working'}
+                {isAvailable ? 'Available for Work' : 'Busy'}
               </div>
             </motion.div>
 

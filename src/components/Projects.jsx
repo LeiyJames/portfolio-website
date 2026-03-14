@@ -13,6 +13,14 @@ const projects = [
     category: 'Front-End'
   },
   {
+    title: 'HydroDash - Water Business Management',
+    description: 'A comprehensive management platform for water refill businesses. Features real-time route tracking, revenue protection, and an intuitive admin dashboard for complete business control.',
+    image: '/images/hydrodash1.png',
+    demo: 'https://hydro-dash-ruby.vercel.app/#hero',
+    tags: ['Vue.js', 'Tailwind CSS', 'Responsive', 'Business Management', 'Mobile App'],
+    category: 'Front-End'
+  },
+  {
     title: 'USANA Health Sciences Website',
     description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
     image: '/images/usana.png',
@@ -24,6 +32,7 @@ const projects = [
     title: 'Aura & Co. e-commerce store',
     description: 'A modern, responsive e-commerce storefront built with Nuxt 3, Tailwind CSS, and Pinia. Features a fully functional shopping cart, product filtering, and a mock data layer for instant deployment.',
     image: '/images/aura.png',
+    github: 'https://github.com/LeiyJames/demo-shopify',
     demo: 'https://demo-shopify1.netlify.app/',
     tags: ['Nuxt 3', 'Tailwind CSS', 'Pinia', 'E-commerce', 'Responsive'],
     category: 'Front-End'
