@@ -56,6 +56,7 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
           exit="hidden"
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={handleBackdropClick}
+          data-testid="certificate-modal-backdrop"
         >
           <motion.div
             variants={modalVariants}
@@ -64,6 +65,7 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
             exit="exit"
             className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
+            data-testid="certificate-modal"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
@@ -115,6 +117,7 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
                       className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200 font-medium"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
+                      data-testid="certificate-modal-view-original"
                     >
                       View Original
                     </motion.a>
@@ -125,6 +128,7 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
                         className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 font-medium"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
+                        data-testid="certificate-modal-download"
                       >
                         Download
                       </motion.a>

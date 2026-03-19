@@ -250,6 +250,7 @@ const Projects = () => {
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={(e, info) => handleSwipe(info.offset.x, info.velocity.x)}
+                    data-testid="projects-mobile-carousel"
                   >
                     <div className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300 mb-12">
                       <motion.div 
@@ -316,11 +317,12 @@ const Projects = () => {
                 </AnimatePresence>
 
                 {/* Carousel Indicators */}
-                <div className="flex justify-center mt-6 space-x-2">
+                <div className="flex justify-center mt-6 space-x-2" data-testid="projects-carousel-indicators">
                   {filteredProjects.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentCarouselIndex(index)}
+                      data-testid={`projects-carousel-indicator-${index}`}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentCarouselIndex
                           ? 'bg-primary-600 w-6'

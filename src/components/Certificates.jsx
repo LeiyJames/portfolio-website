@@ -297,11 +297,13 @@ const Certificates = () => {
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
           className="flex flex-wrap justify-center gap-2 mb-12"
+          data-testid="certificates-category-tabs"
         >
           {categories.map((category, index) => (
             <motion.button
               key={category.key}
               onClick={() => handleCategoryChange(category.key)}
+              data-testid={`certificates-category-${category.key}`}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                 activeCategory === category.key
                   ? 'bg-primary-600 text-white shadow-lg'
@@ -353,12 +355,14 @@ const Certificates = () => {
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}
                   onDragEnd={(e, info) => handleSwipe(info.offset.x, info.velocity.x)}
+                  data-testid="certificates-mobile-carousel"
                 >
                   <motion.div
                     className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer p-6 text-center mx-4"
                     onClick={() => handleCertificateClick(filteredCertificates[currentMobileIndex])}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    data-testid="certificates-mobile-card"
                   >
                     <motion.span 
                       className="text-5xl mb-4 block transform group-hover:scale-110 transition-transform duration-300"
@@ -385,18 +389,19 @@ const Certificates = () => {
                     </div>
                     
                     {/* Hover effect background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-100/20 to-transparent dark:from-primary-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-100/20 to-transparent dark:from-primary-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
 
               {/* Indicators */}
               {filteredCertificates.length > 1 && (
-                <div className="flex justify-center mt-6 space-x-2">
+                <div className="flex justify-center mt-6 space-x-2" data-testid="certificates-mobile-indicators">
                   {filteredCertificates.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentMobileIndex(index)}
+                      data-testid={`certificates-mobile-indicator-${index}`}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentMobileIndex
                           ? 'bg-primary-600 w-6'
@@ -431,6 +436,7 @@ const Certificates = () => {
           initial="hidden"
           animate="visible"
           className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          data-testid="certificates-desktop-grid"
         >
           {filteredCertificates.length > 0 ? (
             filteredCertificates.map((cert, index) => (
@@ -450,6 +456,7 @@ const Certificates = () => {
                 whileTap={{ scale: 0.95 }}
                 className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 onClick={() => handleCertificateClick(cert)}
+                data-testid={`certificates-desktop-card-${index}`}
               >
                 <div className="p-6 text-center">
                   <motion.span 
@@ -513,7 +520,7 @@ const Certificates = () => {
                 
                 {/* Hover effect background */}
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary-100/20 to-transparent dark:from-primary-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-100/20 to-transparent dark:from-primary-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                 />
@@ -543,7 +550,7 @@ const Certificates = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-8"
         >
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400" data-testid="certificates-count">
             Showing {filteredCertificates.length} certificate{filteredCertificates.length !== 1 ? 's' : ''}
             {activeCategory !== 'all' && ` in ${categories.find(c => c.key === activeCategory)?.label}`}
           </p>
