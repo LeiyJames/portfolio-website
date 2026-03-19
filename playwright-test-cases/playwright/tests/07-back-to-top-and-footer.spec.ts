@@ -26,8 +26,10 @@ test.describe('07 — Back-to-top & footer links (Markdown → code)', () => {
     // Click and assert we return to (near) hero top.
     await backToTop.click()
     await expect(page.locator('section#hero')).toBeVisible()
-    const scrollY = await page.evaluate(() => window.scrollY)
-    expect(scrollY).toBeLessThan(50)
+    // Smooth scrolling is async; poll until it completes.
+    await expect
+      .poll(async () => page.evaluate(() => window.scrollY), { timeout: 10_000 })
+      .toBeLessThan(50)
   })
 
   test('TC-07.03 — Footer contains expected external links (desktop + mobile)', async ({ page }) => {
