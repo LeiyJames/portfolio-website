@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { WrenchScrewdriverIcon } from '@heroicons/react/24/outline'
 
+const _motion = motion
+
 const projects = [
   {
     title: 'Code Rabbit Challenge',
@@ -63,6 +65,15 @@ const projects = [
     demo: 'https://expenses-tracker-pro.netlify.app/',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Chart.js', 'Framer Motion', 'React'],
     category: 'Front-End'
+  },
+  {
+    title: 'Portfolio E2E Automation (Playwright + CI)',
+    description: 'End-to-end UI automation suite for my portfolio with desktop + mobile coverage, stable selectors, and GitHub Actions CI running against a local Vite preview server with HTML report artifacts.',
+    image: '/images/qa1.jpg',
+    github: 'https://github.com/LeiyJames/portfolio-website',
+    demo: 'https://leighjames.netlify.app/',
+    tags: ['Playwright', 'TypeScript', 'GitHub Actions', 'CI/CD', 'E2E', 'Vite Preview'],
+    category: 'QA'
   },
 ]
 
