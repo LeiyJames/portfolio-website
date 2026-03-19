@@ -65,11 +65,6 @@ export default defineConfig({
     ],
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'ui-vendor': ['framer-motion', 'react-scroll', '@heroicons/react'],
-          'animation-vendor': ['aos', 'lottie-react', 'react-tsparticles'],
-        },
         // Use modern module format
         format: 'es',
         // Generate modern code
