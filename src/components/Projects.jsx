@@ -23,6 +23,14 @@ const projects = [
     category: 'Front-End'
   },
   {
+    title: 'Volt Fitness',
+    description: 'A professional fitness and wellness website built using Wix. Features a modern design, service showcases, and a responsive layout tailored for fitness enthusiasts.',
+    image: '/images/wix1.png',
+    demo: 'https://stanleigh08.wixsite.com/volt-fitness',
+    tags: ['Wix', 'Responsive', 'Web Design', 'Fitness', 'UI/UX'],
+    category: 'Front-End'
+  },
+  {
     title: 'USANA Health Sciences Website',
     description: 'A modern e-commerce website for USANA Health Sciences, featuring premium nutritional supplements and skincare products. Built with Next.js, Tailwind CSS, and integrated e-commerce functionality.',
     image: '/images/usana.png',
@@ -73,6 +81,13 @@ const projects = [
     github: 'https://github.com/LeiyJames/portfolio-website',
     demo: 'https://leighjames.netlify.app/',
     tags: ['Playwright', 'TypeScript', 'GitHub Actions', 'CI/CD', 'E2E', 'Vite Preview'],
+    category: 'QA'
+  },
+  {
+    title: 'Postman CRUD Testing - Library Management',
+    description: 'Comprehensive API testing suite for a Library Management System. Includes automated CRUD operation tests, schema validation, and environment-driven test scripts using Postman.',
+    image: '/images/postman.png',
+    tags: ['Postman', 'API Testing', 'JavaScript', 'CRUD', 'Automation'],
     category: 'QA'
   },
 ]
@@ -314,14 +329,16 @@ const Projects = () => {
                             GitHub
                           </a>
                         )}
-                        <a
-                          href={filteredProjects[currentCarouselIndex]?.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="button-primary transform hover:scale-105 transition-transform duration-300"
-                        >
-                          <span>Live Demo</span>
-                        </a>
+                        {filteredProjects[currentCarouselIndex]?.demo && (
+                          <a
+                            href={filteredProjects[currentCarouselIndex]?.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="button-primary transform hover:scale-105 transition-transform duration-300"
+                          >
+                            <span>Live Demo</span>
+                          </a>
+                        )}
                       </motion.div>
                     </div>
                   </motion.div>
@@ -435,14 +452,16 @@ const Projects = () => {
                         GitHub
                       </a>
                     )}
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button-primary transform hover:scale-105 transition-transform duration-300"
-                    >
-                      <span>Live Demo</span>
-                    </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-primary transform hover:scale-105 transition-transform duration-300"
+                      >
+                        <span>Live Demo</span>
+                      </a>
+                    )}
                   </motion.div>
                 </motion.div>
               ))}

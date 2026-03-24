@@ -30,6 +30,19 @@ const CourseraIcon = () => (
   </svg>
 )
 
+const PostmanIcon = () => (
+    <svg
+      viewBox="0 0 256 256"
+      width="1.2em"
+      height="1.2em"
+      className="inline-block"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path fill="#FF6C37" d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0z" />
+      <path fill="#FFF" d="M120.35 174.4c-9.04 12.03-21.72 18.25-36.44 18.25-20.94 0-38.02-12.76-38.02-32.02 0-1.87.17-3.66.47-5.38-4.44-.22-8.16-1.75-11.05-4.52-3.55-3.4-5.22-8.57-5.22-14.63s1.66-11.23 5.22-14.63c2.81-2.69 6.4-4.18 10.66-4.47l-.12-.87c0-17.15 4.19-33.34 12.73-45.42 1.06-1.49 2.18-2.92 3.37-4.3 4.89 3.55 10.96 5.67 17.51 5.67 15.68 0 28.53-11.96 28.53-26.53 0-1.35-.1-2.68-.3-3.97 24.22 10.99 41.2 35.15 41.2 63.35 0 16.29-5.63 31.23-15.06 43.16-7.4-4.28-16.14-6.76-25.57-6.76-23.74 0-43.02 14.86-43.02 33.16 0 1.96.24 3.84.69 5.66l.24.92c-7.44 9.87-20.78 16.28-35.86 16.28-0.34 0-0.7 0-1.04-.02" />
+    </svg>
+  )
+
 const certificates = {
   'data-analyst': [
     {
@@ -80,7 +93,13 @@ const certificates = {
     }
   ],
   'software-qa': [
-    // Add QA certificates here when available
+    {
+      name: 'Postman API Fundamentals Student Expert',
+      platform: 'Postman',
+      date: 'March 2024',
+      icon: <PostmanIcon />,
+      image: '/images/postman.png'
+    }
   ],
   'ai-essentials': [
     {

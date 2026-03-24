@@ -110,17 +110,19 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <motion.a
-                      href={certificate.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200 font-medium"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      data-testid="certificate-modal-view-original"
-                    >
-                      View Original
-                    </motion.a>
+                    {certificate.url && (
+                      <motion.a
+                        href={certificate.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200 font-medium"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        data-testid="certificate-modal-view-original"
+                      >
+                        View Original
+                      </motion.a>
+                    )}
                     {certificate.image && (
                       <motion.a
                         href={certificate.image}
@@ -142,14 +144,16 @@ const CertificateModal = ({ isOpen, onClose, certificate }) => {
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Certificate image not available
                   </p>
-                  <a
-                    href={certificate.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200 font-medium"
-                  >
-                    View Certificate Online
-                  </a>
+                  {certificate.url && (
+                    <a
+                      href={certificate.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200 font-medium"
+                    >
+                      View Certificate Online
+                    </a>
+                  )}
                 </div>
               )}
             </div>
