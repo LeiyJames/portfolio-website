@@ -6,6 +6,20 @@ const _motion = motion
 
 const projects = [
   {
+    title: 'Chines Quinn',
+    description: 'A professional salon booking application that streamlines the appointment process for both customers and staff. Built with a focus on seamless user experience and efficient salon management.',
+    image: '/images/mobile/login.png',
+    images: [
+      '/images/mobile/login.png',
+      '/images/mobile/customer.png',
+      '/images/mobile/admin-dashboard.png',
+      '/images/mobile/admin-panel.png',
+      '/images/mobile/staff.png'
+    ],
+    tags: ['Dart', 'Flutter', 'Supabase', 'Freelance'],
+    category: 'Mobile'
+  },
+  {
     title: 'Code Rabbit Challenge',
     description: 'A clean and modern showcase of coding challenges and solutions, built to demonstrate technical proficiency and problem-solving capabilities.',
     image: '/images/dev.png',
@@ -92,12 +106,100 @@ const projects = [
   },
 ]
 
+const ProjectImage = ({ project }) => {
+  const [currentImg, setCurrentImg] = useState(0)
+  const isMobileProject = project.category === 'Mobile'
+  const aspectClass = isMobileProject ? 'aspect-[9/16]' : 'aspect-video'
+  
+  if (!project.images) {
+    return (
+      <motion.div 
+        className={`relative ${aspectClass} mb-4 overflow-hidden rounded-lg`}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+        />
+      </motion.div>
+    )
+  }
+
+  return (
+    <motion.div 
+      className={`relative ${aspectClass} mb-4 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 group/image`}
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.3 }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={project.images[currentImg]}
+          src={project.images[currentImg]}
+          alt={`${project.title} - ${currentImg + 1}`}
+          className="object-contain w-full h-full"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+        />
+      </AnimatePresence>
+      
+      {project.images.length > 1 && (
+        <>
+          <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setCurrentImg((prev) => (prev - 1 + project.images.length) % project.images.length);
+              }}
+              className="p-1 rounded-full bg-white/80 dark:bg-gray-800/80 shadow-md hover:bg-primary-600 hover:text-white transition-all pointer-events-auto"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setCurrentImg((prev) => (prev + 1) % project.images.length);
+              }}
+              className="p-1 rounded-full bg-white/80 dark:bg-gray-800/80 shadow-md hover:bg-primary-600 hover:text-white transition-all pointer-events-auto"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+            {project.images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setCurrentImg(i);
+                }}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentImg ? 'bg-primary-600 w-3' : 'bg-gray-400/50'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </motion.div>
+  )
+}
+
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0)
   const [direction, setDirection] = useState(0)
   const [showAllProjects, setShowAllProjects] = useState(false)
-  const [activeTab, setActiveTab] = useState('Front-End')
+  const [activeTab, setActiveTab] = useState('Mobile')
+
   
   const filteredProjects = projects.filter(project => project.category === activeTab)
   
@@ -219,7 +321,7 @@ const Projects = () => {
 
           {/* Category Tabs */}
           <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            {['Front-End', 'QA', 'Data Analyst'].map((tab) => (
+            {['Front-End', 'Mobile', 'QA', 'Data Analyst'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {
@@ -279,17 +381,7 @@ const Projects = () => {
                     data-testid="projects-mobile-carousel"
                   >
                     <div className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300 mb-12">
-                      <motion.div 
-                        className="relative aspect-video mb-4 overflow-hidden rounded-lg"
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <img
-                        src={filteredProjects[currentCarouselIndex]?.image}
-                        alt={filteredProjects[currentCarouselIndex]?.title}
-                        className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      </motion.div>
+                      <ProjectImage project={filteredProjects[currentCarouselIndex]} />
                       
                       <motion.h3 
                         className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors duration-300"
@@ -390,17 +482,7 @@ const Projects = () => {
                     index >= initialProjectsToShow && !showAllProjects ? 'hidden' : ''
                   }`}
                 >
-                  <motion.div 
-                    className="relative aspect-video mb-4 overflow-hidden rounded-lg"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </motion.div>
+                  <ProjectImage project={project} />
                   
                   <motion.h3 
                     className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors duration-300"
